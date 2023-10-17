@@ -1,15 +1,11 @@
 import './App.css';
-let test = process.env.REACT_APP_TEST
-console.log(test)
-
+import Maincontainer from './Maincontainer';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit and save to reload.
-        </p>
+        <Maincontainer />
       </header>
     </div>
   );
