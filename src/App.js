@@ -1,4 +1,7 @@
 import './App.css';
+let test = process.env.REACT_APP_TEST
+console.log(test)
+
 
 function App() {
   return (
