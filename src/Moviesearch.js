@@ -4,17 +4,32 @@ import Moviecard from './Moviecard';
 
 
 function Moviesearch(props) {
+    // function testApi(){
+    //     console.log(props.movieApiRes)
+    //  }
  
   return (
       <Container>
-        <input type='text' onChange={props.movieSearchHandler} value={props.movieSearchWord}></input>
-        <Moviecard/>
-      </Container>
+        <input type='text' onChange={props.movieSearchHandler} value={props.movieSearchWord} ></input>
+
+        {/* conditionally display the results based on if results were found for the search */}
+        <div className='card-layout'>
+        {props.movieApiRes[0] ? 
+        props.movieApiRes.map(item =>  <Moviecard movieApiRes={item}/>)
+         : <p>No results found, please try annother search</p>}
+         </div>
+
+             </Container>
   );
 }
 
 
 const Container = styled.div`
+.card-layout{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 `
 
