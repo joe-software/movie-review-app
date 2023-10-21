@@ -17,14 +17,6 @@ function Moviecard(props) {
 function reviewBodyHandler(e){
   setReviewBody({...reviewBody, [e.target.name]: e.target.value})
 }
-// function to reset the state of the review content when the review box closes
-function resetReview(){
-  setReviewBody({
-      reviewText: "",
-      reviewImage: "",
-      reviewName: "",
-  })
-}
 
 // function to post the review information to the API
 function reviewPost(){
@@ -32,11 +24,11 @@ function reviewPost(){
   const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ review: reviewBody['reviewText'], date: currentDate, name: reviewBody['reviewName']})
+      body: JSON.stringify({ review: reviewBody['reviewText'], date: currentDate, name: reviewBody['reviewName'], imageUrl: `https://image.tmdb.org/t/p/w500//${movieApiRes['poster_path']}`, movieName: movieApiRes['original_title']})
   };
   fetch('http://localhost:3500/post-review', requestOptions)
   .then(data => data.json())
-  .then(data => console.log(data))
+  .then(closeReviewBox())
 }
  
 //  state to determine wether to open or close the review box
@@ -47,7 +39,11 @@ function openReviewBox(placeholder){
 }
 function closeReviewBox(placeholder){
   setDisplayReviewBox(false)
-  resetReview()
+  setReviewBody({
+    reviewText: "",
+    reviewImage: "",
+    reviewName: "",
+})
 }
 
  
