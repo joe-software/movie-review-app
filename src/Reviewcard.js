@@ -3,16 +3,22 @@ import styled from 'styled-components';
 
 
 function Reviewcard(props) {
+
+    
  
   return (
-      <Container>
+      <Container className='inner-container'>
         <div className='inner-container'>
         <p onClick={props.closeReviewBox}>X</p>
-        <textarea type="textbox"></textarea>
+        <input type='text' onChange={props.reviewBodyHandler} value={props.reviewBody['reviewName']} name='reviewName'></input>
+        <textarea type='textbox' onChange={props.reviewBodyHandler} value={props.reviewBody['reviewText']} name='reviewText'></textarea>
+        <button onClick={props.reviewPost}>Submit Review</button>
         </div>
       </Container>
   );
 }
+
+// reviewTextHandler={props.reviewTextHandler} reviewText={props.reviewText}
 
 
 const Container = styled.div`
@@ -29,6 +35,8 @@ justify-content: center;
     width: 80%;
     height: 80%;
     background: grey;
+    z-index: 1;
+    border-radius: 35px;
 
 display: flex;
 flex-direction: column;

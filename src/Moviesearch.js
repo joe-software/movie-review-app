@@ -15,7 +15,7 @@ function Moviesearch(props) {
         {/* conditionally display the results based on if results were found for the search */}
         <div className='card-layout'>
         {props.movieApiRes[0] ? 
-        props.movieApiRes.map(item =>  <Moviecard movieApiRes={item}/>)
+        props.movieApiRes.map(item =>  <Moviecard movieApiRes={item} reviewBodyHandler={props.reviewBodyHandler} reviewBody={props.reviewBody} reviewPost={props.reviewPost} resetReview={props.resetReview}/>)
          : <p>No results found, please try annother search</p>}
          </div>
 

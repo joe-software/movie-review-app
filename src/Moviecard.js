@@ -5,6 +5,39 @@ import Reviewcard from './Reviewcard';
 
 function Moviecard(props) {
  let movieApiRes = props.movieApiRes 
+
+// handling the review posting functionality
+// store state for review content
+ let [reviewBody, setReviewBody] = useState({
+  reviewText: "",
+  reviewImage: "",
+  reviewName: "",
+})
+// handle the state change for the review content
+function reviewBodyHandler(e){
+  setReviewBody({...reviewBody, [e.target.name]: e.target.value})
+}
+// function to reset the state of the review content when the review box closes
+function resetReview(){
+  setReviewBody({
+      reviewText: "",
+      reviewImage: "",
+      reviewName: "",
+  })
+}
+
+// function to post the review information to the API
+function reviewPost(){
+  let currentDate = new Date()
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ review: reviewBody['reviewText'], date: currentDate, name: reviewBody['reviewName']})
+  };
+  fetch('http://localhost:3500/post-review', requestOptions)
+  .then(data => data.json())
+  .then(data => console.log(data))
+}
  
 //  state to determine wether to open or close the review box
 let [displayReviewBox, setDisplayReviewBox] = useState('false')
@@ -14,6 +47,7 @@ function openReviewBox(placeholder){
 }
 function closeReviewBox(placeholder){
   setDisplayReviewBox(false)
+  resetReview()
 }
 
  
@@ -21,18 +55,13 @@ function closeReviewBox(placeholder){
       <Container>
         <p >{movieApiRes['original_title']}</p>
         <img src={`https://image.tmdb.org/t/p/w500//${movieApiRes['poster_path']}`}></img>
-        <p>Rating(/10):{movieApiRes['vote_average']}</p>
-          <div>
-            <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
-          {displayReviewBox == true ? <Reviewcard closeReviewBox={closeReviewBox}></Reviewcard> : null}
-          </div>
+        <p>{`Rating: ${movieApiRes['vote_average']}/10`}</p>
 
-        {/* rating element */}
-        {/* <div className='review-text-area'>
-          <p>Write your review/comments below</p>
-        <input type="textbox "></input>
-        <button>Submit your review</button>
-        </div> */}
+          <div>
+          <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
+          {displayReviewBox == true ? <Reviewcard closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewcard> : null}
+          </div>
+       
       </Container>
   );
 }
