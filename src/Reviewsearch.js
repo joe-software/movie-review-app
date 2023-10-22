@@ -19,7 +19,7 @@ function Reviewsearch(props) {
 
 
 const Container = styled.div`
-padding-top: 30px;
+padding-top: 70px;
 
 `
 

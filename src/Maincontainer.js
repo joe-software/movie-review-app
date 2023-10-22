@@ -53,7 +53,7 @@ function Maincontainer(props) {
   return (
       <Container>
         <Header>
-        <input type='text' onChange={movieSearchHandler} value={movieSearchWord}></input>
+        <input type='text' placeholder="Movie search..." onChange={movieSearchHandler} value={movieSearchWord}></input>
         <p onClick={selectPage} name='test'>Movie Search</p>
         <p onClick={selectPage} name='reviews'>Reviews</p>
         </Header>
@@ -71,10 +71,26 @@ const Container = styled.div`
 `
 
 const Header = styled.div`
+padding: 10px;
+padding-left: 60px;
 position: fixed;
 width: 100%;
 background: grey;
 display: flex;
+align-items: center;
+justify-content: flex-start;
+input{
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 25px;
+}
+p{
+    margin-left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 `
 
