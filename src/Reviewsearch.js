@@ -3,10 +3,22 @@ import styled from 'styled-components'
 
 
 function Reviewsearch(props) {
+  console.log(props)
  
   return (
       <Container>
-        <p>Test contrainer function</p>
+        
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
+       
+                    
       </Container>
   );
 }

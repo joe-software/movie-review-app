@@ -4,13 +4,9 @@ import Moviecard from './Moviecard';
 
 
 function Moviesearch(props) {
-    // function testApi(){
-    //     console.log(props.movieApiRes)
-    //  }
  
   return (
-      <Container>
-        <input type='text' onChange={props.movieSearchHandler} value={props.movieSearchWord} ></input>
+      <Container>      
 
         {/* conditionally display the results based on if results were found for the search */}
         <div className='card-layout'>

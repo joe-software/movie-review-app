@@ -18,7 +18,6 @@ function Reviewcard(props) {
   );
 }
 
-// reviewTextHandler={props.reviewTextHandler} reviewText={props.reviewText}
 
 
 const Container = styled.div`
