@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import Reviewcard from './Reviewcard';
 
 
 function Reviewsearch(props) {
@@ -8,16 +9,9 @@ function Reviewsearch(props) {
   return (
       <Container>
         
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-        {props.reviewData == "" ? <p>loading</p> : <p>{props.reviewData[0]['name']}</p> }
-       
+        {props.reviewData == "" ? <p>loading</p> : props.reviewData.map((item) => <Reviewcard data={item}  />)}
+        {/* {props.reviewData.map(() => <Reviewcard reviewData={props.reviewData} />)} */}
+        
                     
       </Container>
   );
@@ -25,6 +19,7 @@ function Reviewsearch(props) {
 
 
 const Container = styled.div`
+padding-top: 30px;
 
 `
 

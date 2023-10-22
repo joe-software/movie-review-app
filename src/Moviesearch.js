@@ -21,6 +21,7 @@ function Moviesearch(props) {
 
 
 const Container = styled.div`
+padding-top: 30px;
 .card-layout{
     display: flex;
     flex-wrap: wrap;

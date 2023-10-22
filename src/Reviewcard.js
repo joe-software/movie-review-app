@@ -1,54 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 
 function Reviewcard(props) {
-
-    
+  console.log(props)
  
   return (
-      <Container className='inner-container'>
-        <div className='inner-container'>
-        <p onClick={props.closeReviewBox}>X</p>
-        <input type='text' onChange={props.reviewBodyHandler} value={props.reviewBody['reviewName']} name='reviewName'></input>
-        <textarea type='textbox' onChange={props.reviewBodyHandler} value={props.reviewBody['reviewText']} name='reviewText'></textarea>
-        <button onClick={props.reviewPost}>Submit Review</button>
+      <Container>
+        <div className='inner-cont'>
+            <p>Movie title: {props.data['movieName']}</p>
+            <p>Date of review: {props.data['date']}</p>
+            <div className='picture-review-cont'>
+                <img src={props.data['imageUrl']}></img>
+                <div className='review-cont'>
+                    <p>Name of reviewer: {props.data['name']}</p>
+                    <p>review: {props.data['review']}</p>
+                </div>
+            </div>
         </div>
+       
+                    
       </Container>
   );
 }
 
 
-
 const Container = styled.div`
-position: fixed;
-width: 100%;
-height: 100%;
-top:0;
-right:0;
-display: flex;
-align-items: center;
-justify-content: center;
+background: grey;
+margin: 5px;
+border-radius: 30px;
 
-.inner-container{
-    width: 80%;
-    height: 80%;
-    background: grey;
-    z-index: 1;
-    border-radius: 35px;
-
-display: flex;
-flex-direction: column;
-align-items: center;
-
-textarea{
-   height: 100px;
-   width: 90%;
-
+img{
+    width: 90px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
-}   
 
+.inner-cont{
+    padding: 10px;
+}
 
+.picture-review-cont{
+    display: flex;
+    
+}
+.review-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    p{
+        padding-bottom: 5px;;
+        margin: 0;
+    }
+  
+}
 `
 
 export default Reviewcard;

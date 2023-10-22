@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import Reviewcard from './Reviewcard';
+import Reviewpage from './Reviewpage';
 
 
 function Moviecard(props) {
@@ -55,7 +55,7 @@ function closeReviewBox(placeholder){
 
           <div>
           <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
-          {displayReviewBox == true ? <Reviewcard closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewcard> : null}
+          {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null}
           </div>
        
       </Container>
