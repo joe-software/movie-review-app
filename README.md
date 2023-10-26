@@ -8,6 +8,8 @@ This app allows a user to search for movie, and see the relevant information. So
 
 This app uses React.JS and HTML/CSS and uses Styled-Components to manage CSS/styling. It has the code in place ready to use GET and POST API calls, but theyt are commented out until the API/server side code is hosted. 
 
+The app uses an API from: https://www.themoviedb.org/?language=en-GB
+
 ## Lessons Learned
 
 During this project, I learned the complexities of developing client and server side code, and ensuring that they work together. There is a delay in hosting the server side code, which means that not all of the functionality of this App is currently available.
