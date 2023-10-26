@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 
 function Reviewcard(props) {
-  console.log(props)
  
   return (
       <Container>

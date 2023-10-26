@@ -5,6 +5,7 @@ import Reviewpage from './Reviewpage';
 
 function Moviecard(props) {
  let movieApiRes = props.movieApiRes 
+ console.log(movieApiRes)
 
 // handling the review posting functionality
 // store state for review content
@@ -31,7 +32,7 @@ function reviewPost(){
   .then(closeReviewBox())
 }
  
-//  state to determine wether to open or close the review box
+//  state and handler to determine wether to open or close the review box - currently this functionality is unavailable
 let [displayReviewBox, setDisplayReviewBox] = useState('false')
 
 function openReviewBox(placeholder){
@@ -49,14 +50,22 @@ function closeReviewBox(placeholder){
  
   return (
       <Container>
-        <p >{movieApiRes['original_title']}</p>
-        <img src={`https://image.tmdb.org/t/p/w500//${movieApiRes['poster_path']}`}></img>
-        <p>{`Rating: ${movieApiRes['vote_average']}/10`}</p>
-
-          <div>
-          <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
-          {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null}
+        <div className='info-cont'>
+          <img src={`https://image.tmdb.org/t/p/w500//${movieApiRes['poster_path']}`}></img>
+          <div className='text-cont'>
+          <h1>{movieApiRes['original_title']}</h1>
+          <p><span>Rating: </span>{`${movieApiRes['vote_average']}/10`}</p>
+          <p className='overview-text'><span>Overview: </span>{movieApiRes['overview']}</p>
           </div>
+        </div>
+
+
+
+        <div>
+          {/* *** uncomment once API server is connected *** */}
+          {/* <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
+          {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null} */}
+        </div>
        
       </Container>
   );
@@ -64,30 +73,87 @@ function closeReviewBox(placeholder){
 
 
 const Container = styled.div`
+font-family: 'Lato', sans-serif;
 background: #D3D3D3;
-width: 350px;
-margin: 0.1%;
+width: 450px;
+height: 300px;
+margin: 1% 0.1%;
 border-radius: 35px;
 
-text-overflow: elipsis;
-white-space: nowrap;
 overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2; /* number of lines to show */
+        line-clamp: 2;
+-webkit-box-orient: vertical;
 
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
+
+
+.info-cont{
+  display: flex;
+  justify-content: flex-start;
+}
+.text-cont{
+  margin: 0 5%;
+}
 
 img{
     height: 300px;
     width: 200px;
     border-radius: 25px;
-}
-.review-text-area{
-  display: flex;
-flex-direction: column;
+    background: black;
 }
 
+h1{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5% 0%;
+}
+p{
+  font-size: 20px;
+  margin: 5% 0%;
+
+  display: block;/* or inline-block */
+  text-overflow: ellipsis ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 12.6em;
+  line-height: 1.2em;
+}
+.overview-text{
+  font-size: 15px;
+  padding-bottom: 5%;
+}
+span{
+  font-weight: bold;
+}
+//adaptive for mobile
+@media only screen and (max-width: 600px) {
+  height: 250px;
+  margin: 3% 0.1%;
+  img{
+    height: 250px;
+    width: 166px;
+    border-radius: 25px;
+    background: black;
+}
+  h1{
+    font-size: 14px;
+  }
+
+  p{
+    font-size: 14px;
+  
+  }
+  .overview-text{
+    font-size: 12px;
+    padding-bottom: 5%;
+    max-height: 12.5em;
+    line-height: 1.2em;
+  }
+
+  
+}
 `
 
 export default Moviecard;

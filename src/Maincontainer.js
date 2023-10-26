@@ -26,27 +26,33 @@ function Maincontainer(props) {
 
     // *** Handling the display page selection (existing reviews / movie search) ***
     // state to store the page toggle selection
-    let [displaySelection, setDisplaySelection] = useState('Reviews')
-    // handle page selection and reload the reviews from the db api
-    function selectPage(e){
-        setDisplaySelection(e.target.innerText)
-        setReviewsApiCall(!reviewsApiCall)
-        console.log(displaySelection)
-    }
+
+     // *** uncomment once API server is connected *** 
+
+    // let [displaySelection, setDisplaySelection] = useState('Reviews')
+    // // handle page selection and reload the reviews from the db api
+    // function selectPage(e){
+    //     setDisplaySelection(e.target.innerText)
+    //     setReviewsApiCall(!reviewsApiCall)
+    //     console.log(displaySelection)
+    // }
 
     // *** handle the reviews state for display ***
-    let [reviewsApiCall, setReviewsApiCall] = useState(true)
-    let [reviewData, setReviewData] = useState('')
 
-    useEffect(() => {
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        };
-        fetch(`http://localhost:3500/get-reviews`, requestOptions)
-        .then(data => data.json())
-        .then(data => setReviewData(data))
-    }, [reviewsApiCall])
+    // *** uncomment once API server is connected *** 
+
+    // let [reviewsApiCall, setReviewsApiCall] = useState(true)
+    // let [reviewData, setReviewData] = useState('')
+
+    // useEffect(() => {
+    //     const requestOptions = {
+    //         method: 'GET',
+    //         headers: { 'Content-Type': 'application/json' }
+    //     };
+    //     fetch(`http://localhost:3500/get-reviews`, requestOptions)
+    //     .then(data => data.json())
+    //     .then(data => setReviewData(data))
+    // }, [reviewsApiCall])
 
 
  
@@ -54,11 +60,13 @@ function Maincontainer(props) {
       <Container>
         <Header>
         <input type='text' placeholder="Movie search..." onChange={movieSearchHandler} value={movieSearchWord}></input>
-        <p onClick={selectPage} name='test'>Movie Search</p>
-        <p onClick={selectPage} name='reviews'>Reviews</p>
+        {/* <p onClick={selectPage} name='test'>Movie Search</p>
+        <p onClick={selectPage} name='reviews'>Reviews</p> */}
         </Header>
+        <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />
         {/* conditionally display the movie search page or the reviews page depending upon what the user has selected */}
-        {displaySelection == 'Reviews' ? <Reviewsearch reviewData={reviewData}/> : <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />}
+        {/* *** un-comment to access reviews once server is connected *** */}
+        {/* {displaySelection == 'Reviews' ? <Reviewsearch reviewData={reviewData}/> : <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />} */}
        
 
               </Container>
@@ -67,6 +75,8 @@ function Maincontainer(props) {
 
 
 const Container = styled.div`
+font-family: 'Lato', sans-serif;
+font-size: 20px;
 
 `
 
@@ -85,6 +95,9 @@ input{
     border-radius: 20px;
     padding-left: 10px;
     font-size: 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+
 }
 p{
     margin-left: 30px;

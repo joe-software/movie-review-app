@@ -4,7 +4,6 @@ import Reviewcard from './Reviewcard';
 
 
 function Reviewsearch(props) {
-  console.log(props)
  
   return (
       <Container>
