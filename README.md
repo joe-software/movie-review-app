@@ -1,18 +1,18 @@
 # Movie Search App
 
-This app allows a user to search for movie, and see the relevant information. Soon, it will also contain the functionality to allow reviews to be written and viewed using a Mongo database.  
+This app allows a user to search for movie, and see the relevant information. It also contains the functionality to allow reviews to be written and viewed using a Mongo database.  
 
 **Demo: https://joe-software.github.io/movie-review-app/**
 
 ## Tech used
 
-This app uses React.JS and HTML/CSS and uses Styled-Components to manage CSS/styling. It has the code in place ready to use GET and POST API calls, but theyt are commented out until the API/server side code is hosted. 
+This app uses React.JS and HTML/CSS and uses Styled-Components to manage CSS/styling. The app connects to an external server to make API calls and retrieve and post data to a Mongo db.
 
 The app uses an API from: https://www.themoviedb.org/?language=en-GB
 
 ## Lessons Learned
 
-During this project, I learned the complexities of developing client and server side code, and ensuring that they work together. There is a delay in hosting the server side code, which means that not all of the functionality of this App is currently available.
+During this project, I learned the complexities of developing client and server side code, and ensuring that they work together. There was a delay in hosting the server side code, so releasing versions in stages became useful.
 
 ### Executing program
 
