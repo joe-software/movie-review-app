@@ -21,6 +21,7 @@ function Maincontainer(props) {
         .then(data => {
             setMovieApiRes(data.results)
         })
+        .then(setDisplaySelection('test'))
 
     }, [movieSearchWord])
 
@@ -34,7 +35,6 @@ function Maincontainer(props) {
     function selectPage(e){
         setDisplaySelection(e.target.innerText)
         setReviewsApiCall(!reviewsApiCall)
-        console.log(displaySelection)
     }
 
     // *** handle the reviews state for display ***
