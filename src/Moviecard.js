@@ -55,7 +55,7 @@ function closeReviewBox(placeholder){
           <div className='text-cont'>
           <h1>{movieApiRes['original_title']}</h1>
           <p><span>Rating: </span>{`${movieApiRes['vote_average']}/10`}</p>
-          {/* <p className='overview-text'><span>Overview: </span>{movieApiRes['overview']}</p> */}
+          <p className='overview-text'><span>Overview: </span>{movieApiRes['overview']}</p>
           <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
           {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null}
           </div>
@@ -94,6 +94,15 @@ display: -webkit-box;
 .text-cont{
   margin: 0 5%;
 }
+button{
+  font-family: 'Lato', sans-serif;
+  display: block;/* or inline-block */
+  text-overflow: ellipsis ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3em;
+  line-height: 1em;
+}
 
 img{
     height: 300px;
@@ -106,6 +115,13 @@ h1{
   font-size: 20px;
   font-weight: bold;
   margin: 5% 0%;
+
+  display: block;/* or inline-block */
+  text-overflow: ellipsis ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 2em;
+  line-height: 1em;
 }
 p{
   font-size: 20px;
@@ -115,7 +131,7 @@ p{
   text-overflow: ellipsis ellipsis;
   word-wrap: break-word;
   overflow: hidden;
-  max-height: 12.6em;
+  max-height: 7.6em;
   line-height: 1.2em;
 }
 .overview-text{
@@ -146,7 +162,7 @@ span{
   .overview-text{
     font-size: 12px;
     padding-bottom: 5%;
-    max-height: 12.5em;
+    max-height: 11em;
     line-height: 1.2em;
   }
 
