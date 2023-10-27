@@ -7,13 +7,13 @@ function Reviewcard(props) {
   return (
       <Container>
         <div className='inner-cont'>
-            <p>Movie title: {props.data['movieName']}</p>
-            <p>Date of review: {props.data['date']}</p>
+            <p><span>{props.data['movieName']}</span></p>
+            <p><span>Date of review: </span>{props.data['date']}</p>
             <div className='picture-review-cont'>
                 <img src={props.data['imageUrl']}></img>
                 <div className='review-cont'>
-                    <p>Name of reviewer: {props.data['name']}</p>
-                    <p>review: {props.data['review']}</p>
+                    <p><span>Name of reviewer: </span> {props.data['name']}</p>
+                    <p><span>review: </span> {props.data['review']}</p>
                 </div>
             </div>
         </div>
@@ -26,8 +26,9 @@ function Reviewcard(props) {
 
 const Container = styled.div`
 background: grey;
-margin: 5px;
+margin: 15px;
 border-radius: 30px;
+font-family: 'Lato', sans-serif;
 
 
 img{
@@ -37,22 +38,24 @@ img{
 }
 
 .inner-cont{
-    padding: 10px;
+    padding: 20px;
 }
 
 .picture-review-cont{
     display: flex;
     
 }
+span{
+    font-weight: bold;
+}
 .review-cont{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    p{
-        padding-bottom: 5px;;
-        margin: 0;
-    }
-  
+    justify-content: flex-start;    
+}
+p{
+    padding-bottom: 5px;
+    margin: 0;
 }
 `
 
