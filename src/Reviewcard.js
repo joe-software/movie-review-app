@@ -29,6 +29,7 @@ background: grey;
 margin: 5px;
 border-radius: 30px;
 
+
 img{
     width: 90px;
     margin-right: 20px;

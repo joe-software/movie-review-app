@@ -27,7 +27,7 @@ function reviewPost(){
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ review: reviewBody['reviewText'], date: currentDate, name: reviewBody['reviewName'], imageUrl: `https://image.tmdb.org/t/p/w500//${movieApiRes['poster_path']}`, movieName: movieApiRes['original_title']})
   };
-  fetch('http://localhost:3500/post-review', requestOptions)
+  fetch('https://movie-review-server-e18d38fb50df.herokuapp.com/post-review', requestOptions)
   .then(data => data.json())
   .then(closeReviewBox())
 }
@@ -55,17 +55,15 @@ function closeReviewBox(placeholder){
           <div className='text-cont'>
           <h1>{movieApiRes['original_title']}</h1>
           <p><span>Rating: </span>{`${movieApiRes['vote_average']}/10`}</p>
-          <p className='overview-text'><span>Overview: </span>{movieApiRes['overview']}</p>
+          {/* <p className='overview-text'><span>Overview: </span>{movieApiRes['overview']}</p> */}
+          <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
+          {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null}
           </div>
         </div>
 
-
-
-        <div>
-          {/* *** uncomment once API server is connected *** */}
-          {/* <button onClick={openReviewBox}>Click to review {movieApiRes['original_title']}</button>
-          {displayReviewBox == true ? <Reviewpage closeReviewBox={closeReviewBox} reviewBodyHandler={reviewBodyHandler} reviewBody={reviewBody} reviewPost={reviewPost}></Reviewpage> : null} */}
-        </div>
+        
+        
+        
        
       </Container>
   );

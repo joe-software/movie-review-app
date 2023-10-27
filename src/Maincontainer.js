@@ -29,30 +29,30 @@ function Maincontainer(props) {
 
      // *** uncomment once API server is connected *** 
 
-    // let [displaySelection, setDisplaySelection] = useState('Reviews')
-    // // handle page selection and reload the reviews from the db api
-    // function selectPage(e){
-    //     setDisplaySelection(e.target.innerText)
-    //     setReviewsApiCall(!reviewsApiCall)
-    //     console.log(displaySelection)
-    // }
+    let [displaySelection, setDisplaySelection] = useState('Reviews')
+    // handle page selection and reload the reviews from the db api
+    function selectPage(e){
+        setDisplaySelection(e.target.innerText)
+        setReviewsApiCall(!reviewsApiCall)
+        console.log(displaySelection)
+    }
 
     // *** handle the reviews state for display ***
 
     // *** uncomment once API server is connected *** 
 
-    // let [reviewsApiCall, setReviewsApiCall] = useState(true)
-    // let [reviewData, setReviewData] = useState('')
+    let [reviewsApiCall, setReviewsApiCall] = useState(true)
+    let [reviewData, setReviewData] = useState('')
 
-    // useEffect(() => {
-    //     const requestOptions = {
-    //         method: 'GET',
-    //         headers: { 'Content-Type': 'application/json' }
-    //     };
-    //     fetch(`http://localhost:3500/get-reviews`, requestOptions)
-    //     .then(data => data.json())
-    //     .then(data => setReviewData(data))
-    // }, [reviewsApiCall])
+    useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        };
+        fetch(`https://movie-review-server-e18d38fb50df.herokuapp.com/get-reviews`, requestOptions)
+        .then(data => data.json())
+        .then(data => setReviewData(data))
+    }, [reviewsApiCall])
 
 
  
@@ -60,13 +60,13 @@ function Maincontainer(props) {
       <Container>
         <Header>
         <input type='text' placeholder="Movie search..." onChange={movieSearchHandler} value={movieSearchWord}></input>
-        {/* <p onClick={selectPage} name='test'>Movie Search</p>
-        <p onClick={selectPage} name='reviews'>Reviews</p> */}
+        <p onClick={selectPage} name='test'>Movie Search</p>
+        <p onClick={selectPage} name='reviews'>Reviews</p>
         </Header>
-        <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />
+        {/* <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} /> */}
         {/* conditionally display the movie search page or the reviews page depending upon what the user has selected */}
         {/* *** un-comment to access reviews once server is connected *** */}
-        {/* {displaySelection == 'Reviews' ? <Reviewsearch reviewData={reviewData}/> : <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />} */}
+        {displaySelection == 'Reviews' ? <Reviewsearch reviewData={reviewData}/> : <Moviesearch movieSearchHandler={movieSearchHandler} movieSearchWord={movieSearchWord} movieApiRes={movieApiRes} />}
        
 
               </Container>
@@ -103,6 +103,26 @@ p{
     margin-left: 30px;
     font-size: 30px;
     cursor: pointer;
+}
+
+//adaptive for mobile
+@media only screen and (max-width: 600px) {
+    padding-left: 5px;
+
+    input{
+        width: 100px;
+        border-radius: 15px;
+        font-size: 17px;      
+    
+    }
+    p{
+        margin-left: 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+ 
+
+  
 }
 
 `
