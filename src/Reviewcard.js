@@ -29,6 +29,7 @@ background: grey;
 margin: 15px;
 border-radius: 30px;
 font-family: 'Lato', sans-serif;
+border: 4px solid black;
 
 
 img{
@@ -56,6 +57,26 @@ span{
 p{
     padding-bottom: 5px;
     margin: 0;
+}
+
+@media only screen and (max-width: 650px) {
+    margin: 10px;
+    border: 2px solid black;
+
+.inner-cont{
+    padding: 10px;
+}
+
+span{
+    font-size: 17px;
+}
+
+p{
+    padding-bottom: 5px;
+    margin: 0;
+    font-size: 15px;
+}  
+  
 }
 `
 

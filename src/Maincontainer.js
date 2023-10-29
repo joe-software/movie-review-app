@@ -89,6 +89,7 @@ background: grey;
 display: flex;
 align-items: center;
 justify-content: flex-start;
+border-bottom: 5px solid black;
 input{
     height: 30px;
     width: 200px;
@@ -108,6 +109,7 @@ p{
 //adaptive for mobile
 @media only screen and (max-width: 600px) {
     padding-left: 5px;
+    border-bottom: 3px solid black;
 
     input{
         width: 100px;

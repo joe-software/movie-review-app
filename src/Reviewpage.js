@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 
@@ -49,12 +48,11 @@ p{
   color: white;
   margin: 10px;
   cursor: pointer;
-
 }
 
 .inner-container{
     width: 60%;
-    height: 50%;
+    height: 70%;
     background: grey;
     z-index: 1;
     border-radius: 35px;
@@ -73,7 +71,6 @@ textarea{
 }  
 .disclaimer{
   font-size: 10px;
-  font-weight: normal;
 }
 
 //adaptive for mobile
