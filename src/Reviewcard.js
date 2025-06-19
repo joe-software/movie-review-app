@@ -8,7 +8,7 @@ function Reviewcard(props) {
       <Container>
         <div className='inner-cont'>
             <p><span>{props.data['movieName']}</span></p>
-            <p><span>Date of review: </span>{props.data['date']}</p>
+            <p><span>Date of review: </span>{new Date(props.data['date']).toLocaleDateString()}</p>
             <div className='picture-review-cont'>
                 <img src={props.data['imageUrl']}></img>
                 <div className='review-cont'>
