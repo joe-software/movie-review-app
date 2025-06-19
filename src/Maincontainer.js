@@ -49,7 +49,7 @@ function Maincontainer(props) {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`https://movie-review-server-e18d38fb50df.herokuapp.com/get-reviews`, requestOptions)
+        fetch(`https://movie-review-server-lqzh.onrender.com/get-reviews`, requestOptions)
         .then(data => data.json())
         .then(data => setReviewData(data))
     }, [reviewsApiCall])
